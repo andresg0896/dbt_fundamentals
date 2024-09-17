@@ -7,7 +7,7 @@ payments as(
 ),
 
 full_orders as(
-    select o.order_id, c.customer_id, p.amount
+    select o.order_id, o.customer_id, p.amount
     from orders o join payments p on o.order_id = p.order_id
     where p.status = "success"
 )
