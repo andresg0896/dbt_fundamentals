@@ -5,7 +5,17 @@ sources:
     tables:
       - name: customers
         identifier: jaffle_shop_customers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
       - name: orders
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
         identifier: jaffle_shop_orders
         loaded_at_field: _etl_loaded_at
         freshness:
