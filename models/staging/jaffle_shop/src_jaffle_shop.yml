@@ -1,10 +1,12 @@
 sources:
-  - name: dbt_testing
+  - name: jaffle_shop
     database: dbt-cloud-test-435803
     schema: dbt_testing
     tables:
-      - name: jaffle_shop_customers
-      - name: jaffle_shop_orders
+      - name: customers
+        identifier: jaffle_shop_customers
+      - name: orders
+        identifier: jaffle_shop_orders
         loaded_at_field: _etl_loaded_at
         freshness:
           warn_after: {count: 12, period: hour}
