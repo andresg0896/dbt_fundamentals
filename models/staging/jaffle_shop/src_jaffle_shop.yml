@@ -1,18 +1,23 @@
 sources:
   - name: jaffle_shop
+    description: A clone of a Postgres application database.
     database: dbt-cloud-test-435803
     schema: dbt_testing
     tables:
       - name: customers
+        description: Raw customers data.
         identifier: jaffle_shop_customers
         columns:
           - name: id
+            description: Primary key for customers.
             tests:
               - unique
               - not_null
       - name: orders
+        description: Raw orders data.
         columns:
           - name: id
+            description: Primary key for customers.
             tests:
               - unique
               - not_null
