@@ -3,4 +3,4 @@ select
     orderid as order_id,
     amount/100 as amount,
     status
-    from {{ source('stripe', 'stripe_payment') }}
+    from {{ source('dbt_testing', 'stripe_payment') }}

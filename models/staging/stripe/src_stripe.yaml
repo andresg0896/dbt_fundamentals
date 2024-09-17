@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: stripe
-    database: dbt_testing
-    schema: stripe
+  - name: dbt_testing
+    database: dbt-cloud-test-435803
+    schema: dbt_testing
     tables:
       - name: stripe_payment
         loaded_at_field: _batched_at
