@@ -4,7 +4,6 @@ with payment AS (
     select * from {{ ref('stg_stripe__payments') }}
 )
 
-,
 select
     order_id,
     sum(amount) as total_amount
