@@ -2,11 +2,11 @@ sources:
   - name: jaffle_shop
     description: A clone of a Postgres application database.
     database: dbt-cloud-test-435803
-    schema: dbt_testing
+    schema: jaffle_shop
     tables:
       - name: customers
         description: Raw customers data.
-        identifier: jaffle_shop_customers
+        identifier: customers
         columns:
           - name: id
             description: Primary key for customers.
@@ -21,7 +21,7 @@ sources:
             tests:
               - unique
               - not_null
-        identifier: jaffle_shop_orders
+        identifier: orders
         loaded_at_field: _etl_loaded_at
         freshness:
           warn_after: {count: 12, period: hour}
