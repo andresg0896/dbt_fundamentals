@@ -24,8 +24,8 @@ paid_orders as (
         orders.customer_id,
         orders.order_placed_at,
         orders.order_status,
-        p.total_amount_paid,
-        p.payment_finalized_date,
+        payments.total_amount_paid,
+        payments.payment_finalized_date,
         customers.customer_first_name,
         customers.customer_last_name
     from orders
@@ -68,7 +68,7 @@ final as(
         case when c.first_order_date = p.order_placed_at
         then 'new'
         else 'return' end as nvsr,
-        x.clv_bad as customer_lifetime_value,
+        unknown_paid.clv_bad as customer_lifetime_value,
         c.first_order_date as fdos
     from paid_orders p
     left join customer_orders as c using (customer_id)
