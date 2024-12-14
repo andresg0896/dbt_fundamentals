@@ -10,7 +10,6 @@ transformed as (
 
         select 
             date,
-            measurement_time,
             CASE 
               WHEN measurement_time BETWEEN '00:00:00' AND '03:59:59' then '00:00:00'
               WHEN measurement_time BETWEEN '04:00:00' AND '07:59:59' then '04:00:00'
@@ -32,8 +31,17 @@ transformed as (
             main_board_id,
             sub_group_id,
             variable_id,
-            variable_value
+            variable_value,
         from measurements
+
+),
+final as (
+        select 
+            *,
+            round(avg(variable_value) over (partition by date, start_time, end_time, client_id, group_id, main_board_id, sub_group_id, variable_id),4) as variable_mean,
+            round(coalesce(stddev(variable_value) over (partition by date, start_time, end_time, client_id, group_id, main_board_id, sub_group_id, variable_id),0),4) as variable_stddev            
+        from transformed
+
 )
 
-select * from transformed
+select * from final
