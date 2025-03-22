@@ -39,7 +39,7 @@ final as (
         select 
             *,
             round(avg(variable_value) over (partition by date, start_time, end_time, client_id, group_id, main_board_id, sub_group_id, variable_id),4) as variable_mean,
-            round(coalesce(stddev(variable_value) over (partition by date, start_time, end_time, client_id, group_id, main_board_id, sub_group_id, variable_id),0),4) as variable_stddev            
+            round(coalesce(stddev(variable_value) over (partition by date, start_time, end_time, client_id, group_id, main_board_id, sub_group_id, variable_id),0),4) as variable_std_dev            
         from transformed
 
 )
